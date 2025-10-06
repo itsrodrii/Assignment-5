@@ -1,17 +1,13 @@
 # 🧪 Performance Lab – Test, Analyze, Optimize
-# Your name: _____________________
-# Date: _____________________
+# Name: ___Kossi Koutoglo__________________
+# Date: ___10/04/2025__________________
 
 # 🔍 Problem 1: Find Most Frequent Element
-# Given a list of integers, return the value that appears most frequently.
-# If there's a tie, return any of the most frequent.
-#
-# Example:
-# Input: [1, 3, 2, 3, 4, 1, 3]
-# Output: 3
+# We need to find the number that shows up the most in a list.
+# If there's a tie, just return any of the most frequent numbers.
 
 def most_frequent(numbers):
-    # 📝 Implementation
+    # I used a dictionary to count how many times each number appears
     freq = {}
     max_count = 0
     result = None
@@ -24,31 +20,27 @@ def most_frequent(numbers):
     return result
 
 
-# 📝 Test cases
-print(most_frequent([1, 3, 2, 3, 4, 1, 3]))  # Expected 3
-print(most_frequent([4, 4, 5, 5, 6]))        # Expected 4 or 5
+# Testing the function
+print(most_frequent([1, 3, 2, 3, 4, 1, 3]))  # Should print 3
+print(most_frequent([4, 4, 5, 5, 6]))        # Could be 4 or 5
 
 
 """
-Time and Space Analysis for problem 1:
-- Best-case: O(n) → must traverse all elements at least once
+Performance notes:
+- Best-case: O(n) because we have to look at every number
 - Worst-case: O(n)
 - Average-case: O(n)
-- Space complexity: O(n) → dictionary stores counts for each unique element
-- Why this approach? Simple hash map allows linear counting and easy max lookup
-- Could it be optimized? Only if input size is very small; otherwise, this is efficient
+- Space: O(n) for storing counts of each number
+- Why this works: The dictionary makes counting fast and simple
+- Could it be faster? Not really for big lists, this is already efficient
 """
 
 
 # 🔍 Problem 2: Remove Duplicates While Preserving Order
-# Write a function that returns a list with duplicates removed but preserves order.
-#
-# Example:
-# Input: [4, 5, 4, 6, 5, 7]
-# Output: [4, 5, 6, 7]
+# I want to make a new list with no duplicates, but keep the original order
 
 def remove_duplicates(nums):
-    # 📝 Implementation
+    # Use a set to remember what we've seen and a new list to store results
     seen = set()
     result = []
     for num in nums:
@@ -58,32 +50,28 @@ def remove_duplicates(nums):
     return result
 
 
-# 📝 Test cases
-print(remove_duplicates([4, 5, 4, 6, 5, 7]))  # Expected [4, 5, 6, 7]
-print(remove_duplicates([1, 2, 2, 3]))        # Expected [1, 2, 3]
+# Testing
+print(remove_duplicates([4, 5, 4, 6, 5, 7]))  # Should print [4, 5, 6, 7]
+print(remove_duplicates([1, 2, 2, 3]))        # Should print [1, 2, 3]
 
 
 """
-Time and Space Analysis for problem 2:
-- Best-case: O(n) → must check each element at least once
+Performance notes:
+- Best-case: O(n) because we check each number once
 - Worst-case: O(n)
 - Average-case: O(n)
-- Space complexity: O(n) → set and result list
-- Why this approach? Hash set allows O(1) membership check and preserves order
-- Could it be optimized? Not significantly; this is already linear time
+- Space: O(n) for the set and the output list
+- Why this works: Checking set membership is fast (O(1))
+- Could it be faster? This is already linear, so it's fine
 """
 
 
 # 🔍 Problem 3: Return All Pairs That Sum to Target
-# Write a function that returns all unique pairs of numbers in the list that sum to a target.
-# Order of output does not matter. Assume input list has no duplicates.
-#
-# Example:
-# Input: ([1, 2, 3, 4], target=5)
-# Output: [(1, 4), (2, 3)]
+# Find all pairs of numbers that add up to a target
+# Assume no duplicates in input
 
 def find_pairs(nums, target):
-    # 📝 Implementation
+    # Use a set to track numbers we've seen
     seen = set()
     pairs = []
     for num in nums:
@@ -94,32 +82,28 @@ def find_pairs(nums, target):
     return pairs
 
 
-# 📝 Test cases
-print(find_pairs([1, 2, 3, 4], 5))  # Expected [(1, 4), (2, 3)]
-print(find_pairs([0, 5, 3, 2], 5))  # Expected [(0, 5), (3, 2)]
+# Testing
+print(find_pairs([1, 2, 3, 4], 5))  # Should print [(1, 4), (2, 3)]
+print(find_pairs([0, 5, 3, 2], 5))  # Should print [(0, 5), (3, 2)]
 
 
 """
-Time and Space Analysis for problem 3:
-- Best-case: O(n) → traverse list once
+Performance notes:
+- Best-case: O(n), we just loop once
 - Worst-case: O(n)
 - Average-case: O(n)
-- Space complexity: O(n) → set stores seen elements
-- Why this approach? Single pass, uses hash set to find complements
-- Could it be optimized? Already linear; no nested loops needed
+- Space: O(n) for the set
+- Why this works: Using a set avoids nested loops
+- Could it be faster? Linear is already the best for this problem
 """
 
 
 # 🔍 Problem 4: Simulate List Resizing (Amortized Cost)
-# Create a function that adds n elements to a list that has a fixed initial capacity.
-# When the list reaches capacity, simulate doubling its size by creating a new list
-# and copying all values over (simulate this with print statements).
-#
-# Example:
-# add_n_items(6) → should print when resizing happens.
+# Add n items to a list and "double" the list size when needed
+# Print a message every time resizing happens
 
 def add_n_items(n):
-    # 📝 Implementation
+    # Start with capacity 1
     capacity = 1
     lst = [None] * capacity
     size = 0
@@ -136,7 +120,7 @@ def add_n_items(n):
         size += 1
 
 
-# 📝 Test case
+# Testing
 add_n_items(6)
 # Expected output:
 # Resizing from 1 to 2
@@ -145,26 +129,19 @@ add_n_items(6)
 
 
 """
-Time and Space Analysis for problem 4:
-- When do resizes happen? When size reaches capacity
-- Worst-case for a single append: O(n) → copying all elements
-- Amortized time per append: O(1) → doubling reduces frequent resizing
-- Space complexity: O(n) → list stores all elements
-- Why doubling reduces cost overall? Fewer resizes overall; average cost per append is constant
+Performance notes:
+- Resizes happen when list is full
+- Worst-case for one append: O(n) when we have to copy everything
+- Amortized time per append: O(1), because doubling reduces frequency of resizing
+- Space: O(n) for the list
+- Why doubling helps: fewer resizes overall, so average append is fast
 """
 
 
 # 🔍 Problem 5: Compute Running Totals
-# Write a function that takes a list of numbers and returns a new list
-# where each element is the sum of all elements up to that index.
-#
-# Example:
-# Input: [1, 2, 3, 4]
-# Output: [1, 3, 6, 10]
-# Because: [1, 1+2, 1+2+3, 1+2+3+4]
+# Return a list where each number is the sum of all numbers up to that index
 
 def running_total(nums):
-    # 📝 Implementation
     total = 0
     result = []
     for num in nums:
@@ -173,17 +150,17 @@ def running_total(nums):
     return result
 
 
-# 📝 Test cases
-print(running_total([1, 2, 3, 4]))  # Expected [1, 3, 6, 10]
-print(running_total([5, 5, 5]))     # Expected [5, 10, 15]
+# Testing
+print(running_total([1, 2, 3, 4]))  # Should print [1, 3, 6, 10]
+print(running_total([5, 5, 5]))     # Should print [5, 10, 15]
 
 
 """
-Time and Space Analysis for problem 5:
-- Best-case: O(n) → must iterate all elements
+Performance notes:
+- Best-case: O(n), we need to go through each element
 - Worst-case: O(n)
 - Average-case: O(n)
-- Space complexity: O(n) → new result list
-- Why this approach? Simple single pass, accumulates running sum
-- Could it be optimized? Already linear, no better asymptotic improvement
+- Space: O(n) for the new list
+- Why this works: Single loop keeps track of running sum
+- Could it be faster? Already linear, so no
 """
